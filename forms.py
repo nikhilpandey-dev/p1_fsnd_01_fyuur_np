@@ -90,6 +90,8 @@ class VenueForm(Form):
     )
     genres = SelectMultipleField(
         # TODO implement enum restriction
+        # https://knowledge.udacity.com/questions/638321
+        # We are not supposed to look into it
         'genres', validators=[DataRequired()],
         choices=[
             ('Alternative', 'Alternative'),
@@ -192,7 +194,9 @@ class ArtistForm(Form):
         ]
     )
     phone = StringField(
-        # TODO implement validation logic for phone 
+        # TODO implement validation logic for phone
+        # https://knowledge.udacity.com/questions/638321
+        # We are not supposed to look into it
         'phone'
     )
     image_link = StringField(
@@ -224,6 +228,8 @@ class ArtistForm(Form):
      )
     facebook_link = StringField(
         # TODO implement enum restriction
+        # https://knowledge.udacity.com/questions/638321
+        # We are not supposed to look into it
         'facebook_link', validators=[URL()]
      )
 
