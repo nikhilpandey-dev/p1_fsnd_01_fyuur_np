@@ -38,10 +38,13 @@ class Venue(db.Model):
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
     genres = db.Column(db.ARRAY(db.String), nullable=False, server_default="{}")
-    website_link = db.Column(db.String(120))
+    """ Changed name as per this knowedge based question:
+        https://knowledge.udacity.com/questions/545169
+    """
+    website = db.Column(db.String(120))
     seeking_talent = db.Column(db.Boolean(), nullable=False, default=False)
     seeking_description = db.Column(db.String(500))
-    shows = db.relationship('Show', backref=db.backref('venue') ,lazy='joined')
+    shows = db.relationship('Show', backref=db.backref('venue',lazy='joined'), cascade="all, delete")
     
 
     def __repr__(self):
@@ -62,10 +65,13 @@ class Artist(db.Model):
     genres = db.Column(db.ARRAY(db.String), nullable=False, server_default="{}")
     image_link = db.Column(db.String(500))
     facebook_link = db.Column(db.String(120))
-    website_link = db.Column(db.String(120))
+    """ Changed name as per this knowedge based question:
+        https://knowledge.udacity.com/questions/545169
+    """
+    website = db.Column(db.String(120))
     seeking_venue = db.Column(db.Boolean(), nullable=False, default=False)
     seeking_description = db.Column(db.String(500))
-    shows = db.relationship('Show', backref=db.backref('artist') ,lazy='joined')
+    shows = db.relationship('Show', backref=db.backref('artist',lazy='joined'), cascade="all, delete")
 
     def __repr__(self) -> str:
         return f"<Artist id: {self.id}, name: {self.name}, genres: {self.genres}>"
